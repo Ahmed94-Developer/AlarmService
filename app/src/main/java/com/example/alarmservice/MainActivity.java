@@ -65,12 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     public void CancelAlert() {
-        intent = new Intent(this, AlarmReicever.class);
-        pendingIntent = PendingIntent.getBroadcast(
-                this.getApplicationContext(), 234, intent, 0);
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        alarmManager.cancel(pendingIntent);
+       alarmManager.cancel(pendingIntent);
     }
 
     @Override
