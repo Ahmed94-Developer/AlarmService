@@ -24,6 +24,9 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityMainBinding binding;
+    Intent intent;
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
 
 
     @Override
@@ -51,10 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startAlert() {
 
-        Intent intent = new Intent(this, AlarmReicever.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+       intent = new Intent(this, AlarmReicever.class);
+       pendingIntent = PendingIntent.getBroadcast(
                 this.getApplicationContext(), 234, intent, 0);
-       AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+      alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 0,
@@ -62,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     public void CancelAlert() {
-        Intent intent = new Intent(this, AlarmReicever.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+        intent = new Intent(this, AlarmReicever.class);
+        pendingIntent = PendingIntent.getBroadcast(
                 this.getApplicationContext(), 234, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         alarmManager.cancel(pendingIntent);
     }
